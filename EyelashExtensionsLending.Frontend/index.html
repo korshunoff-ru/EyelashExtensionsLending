@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/794045e8f7.js" crossorigin="anonymous"></script>
+
+    <title>Hello, world!</title>
+
+    <style>
+        * {box-sizing: border-box;}
+        ul {list-style-type: none;}
+        body {font-family: Verdana, sans-serif;}
+        
+        .month {
+            padding: 50px 20px;
+            width: 100%;
+            background: #000;
+            text-align: center;
+        }
+        
+        .month ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .month ul li {
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .month .prev {
+            float: left;
+            padding-top: 10px;
+        }
+        
+        .month .next {
+            float: right;
+            padding-top: 10px;
+        }
+        
+        .weekdays {
+            margin: 0;
+            padding: 10px 0;
+            background-color: #ddd;
+        }
+        
+        .weekdays li {
+            display: inline-block;
+            width: 13.6%;
+            color: #666;
+            text-align: center;
+        }
+        
+        .days {
+            padding: 10px 0;
+            background: #eee;
+            margin: 0;
+        }
+        
+        .days li {
+            list-style-type: none;
+            display: inline-block;
+            width: 12.5%;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size:12px;
+            color: #777;
+        }
+
+        .days li span:hover {
+            padding: 5px;
+            background: rgb(78, 78, 78);
+            color: white !important;
+            cursor: pointer;
+        }
+        
+        
+
+        .calendar-icon {
+          width: 32px;
+        }
+        
+        .days li .active {
+            padding: 5px;
+            background: #000;
+            color: white !important
+        }
+
+        .days1 {
+          text-align: center;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .days1 > li {
+          display: inline-block;
+          width: 12.1%;
+        }
+
+        .days1 li > span {
+          display: block;
+        }
+        
+        .calendar-full {
+          overflow-y: hidden;
+          max-height: 100%; /* approximate max height */
+        }
+
+        .calendar-full.closed {
+          max-height: 0;
+        }
+
+        /* Add media queries for smaller screens */
+        @media screen and (max-width:720px) {
+            .weekdays li, .days li, .days1 > li  {width: 13.1%;}
+        }
+        
+        @media screen and (max-width: 420px) {
+            .weekdays li, .days li, .days1 > li{width: 12.5%;}
+            .days li .active {padding: 2px;}
+        }
+        
+        @media screen and (max-width: 290px) {
+            .weekdays li, .days li, .days1 > li {width: 12.2%;}
+        }
+        
+        .button-empty {
+          padding: 0;
+          border: none;
+          font: inherit;
+          color: inherit;
+          background-color: transparent;
+        /* отображаем курсор в виде руки при наведении; некоторые
+          считают, что необходимо оставлять стрелочный вид для кнопок */
+          cursor: pointer;
+
+        }
+
+        .button-empty:active, .button-empty:focus {
+          outline: none;
+          font-size: 2rem;
+        }
+
+        </style>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+        </div>
+      </nav>
+
+    <div class="container"> 
+
+
+<div class="calendar">
+  <div class="calendar-preview">
+    <ul class="days1">
+      <li class="prev">❮</li>
+      <li><span>21</span><span>ПН</span></li>
+      <li><span>22</span><span>ВТ</span></li>
+      <li><span>23</span><span>СР</span></li>
+      <li><span>24</span><span>ЧТ</span></li>
+      <li><span>25</span><span>ПТ</span></li>
+      <li class="next">❯</li>
+      <li><button id="calendar" class="button-empty"><i class="fa fa-calendar fa-1x" aria-hidden="true"></i></button></li>
+    </ul>
+  </div>
+  <div class="calendar-full">
+    <div class="month">      
+      <ul>
+        <li class="prev">❮</li>
+        <li class="next">❯</li>
+        <li>
+          Август<br>
+          <span style="font-size:18px">2020</span>
+        </li>
+      </ul>
+    </div>
+    
+    <ul class="weekdays">
+      <li>Пн</li>
+      <li>Вт</li>
+      <li>Ср</li>
+      <li>Чт</li>
+      <li>Пт</li>
+      <li>Сб</li>
+      <li>Вс</li>
+    </ul>
+    
+    <ul class="days">  
+      <li><span>1</span></li>
+      <li><span>2</span></li>
+      <li><span>3</span></li>
+      <li><span>4</span></li>
+      <li><span>5</span></li>
+      <li><span>6</span></li>
+      <li><span>7</span></li>
+      <li><span>8</span></li>
+      <li><span>9</span></li>
+      <li><span class="active">10</span></li>
+      <li><span>11</span></li>
+      <li><span>12</span></li>
+      <li><span>13</span></li>
+      <li><span>14</span></li>
+      <li><span>15</span></li>
+      <li><span>16</span></li>
+      <li><span>17</span></li>
+      <li><span>18</span></li>
+      <li><span>19</span></li>
+      <li><span>20</span></li>
+      <li><span>21</span></li>
+      <li><span>22</span></li>
+      <li><span>23</span></li>
+      <li><span>24</span></li>
+      <li><span>25</span></li>
+      <li><span>26</span></li>
+      <li><span>27</span></li>
+      <li><span>28</span></li>
+      <li><span>29</span></li>
+      <li><span>30</span></li>
+      <li><span>31</span></li>
+    </ul>
+  </div>
+</div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/3bf0d6a349.js"></script>
+  </body>
+
+  
+
+  <script>
+        
+    $('#calendar').click(function()  {
+      $('.calendar-full').slideToggle( { // отображаем, или скрываем элементы <div> в документе
+	      duration: 400, // продолжительность анимации
+	      easing: "linear",
+	      queue: false // не ставим в очередь
+	    });
+    })
+
+  </script>
+
+</html>
