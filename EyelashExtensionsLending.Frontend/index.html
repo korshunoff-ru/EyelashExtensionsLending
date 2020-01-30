@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animate.css">
   <script src="https://kit.fontawesome.com/794045e8f7.js" crossorigin="anonymous"></script>
 
   <title>Calendar</title>
@@ -21,14 +22,25 @@
         <img src="./img/logo.png" alt="logo" >
         <h3>Мастер по наращиванию ресниц</h3>
       </div>
+
+      <ul>
+        <li><a href="#">Инфо</a></li>
+        <li><a href="#">Услуги</a></li>
+        <li><a href="#">Портфолио</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Записаться</a></li>
+      </ul>
+
+      <img id="menu" src="./img/menu.png" alt="menu">
+
     </div>
   </header>
 
   <section id="content">
     <div class="layer"></div>
-    <div class="container">
+    <div class="container animated slideInRight delay-1s">
       <div class="input">
-        <h3>Выберите дату:</h3>
+        <h3>Выберите дату<sup>*</sup>:</h3>
       <div class="calendar">
 
         <div class="mini-calendar">
@@ -38,15 +50,15 @@
           <div class="mini-calendar-item"><a class="day-link"><span class="day">3</span><span class="week">СР</span></a></div class="mini-calendar-item">
           <div class="mini-calendar-item"><a class="day-link"><span class="day">4</span><span class="week">ЧТ</span></a></div class="mini-calendar-item">
           <div class="mini-calendar-item"><a class="day-link"><span class="day">5</span><span class="week">ПТ</span></a></div class="mini-calendar-item">
-          <div><button id="prev-day">❯</button></div>
-          <div><button id="btn-calendar-show"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></button></div>
+          <div><button tabindex="1" id="prev-day">❯</button></div>
+          <div><button tabindex="2" id="btn-calendar-show"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></button></div>
         </div>
     
         <div class="content">
           <div class="months">
-            <div><button id="prev-month">❮</button></div>
+            <div><button tabindex="3" id="prev-month">❮</button></div>
             <div><span id="month">Декабрь</span><span id="year">2019</span></div>
-            <div><button id="next-month">❯</button></div>
+            <div><button tabindex="4" id="next-month">❯</button></div>
           </div>
       
           <div class="weekdays">
@@ -111,28 +123,28 @@
       </div>
     </div>
       <div class="input">
-        <h3>Выберите время:</h3>
+        <h3>Выберите время<sup>*</sup>:</h3>
 
         <div class="content">
 
           <div class="check-box">
-            <input id="time1" name="time" type="radio">
+            <input id="time1" name="time" type="radio" value="1" tabindex="5">
             <label for="time1">14:00</label>
           </div>
     
           <div class="check-box">
-            <input id="time2" name="time" type="radio">
+            <input id="time2" name="time" type="radio" value="2" tabindex="6">
             <label for="time2">15:00</label>
           </div>
     
           <div class="check-box">
-            <input id="time3" name="time" type="radio">
+            <input id="time3" name="time" type="radio" value="3" tabindex="7">
             <label for="time3">16:00</label>
           </div>
     
           <div class="check-box">
-            <input id="time4" name="time" type="radio">
-         <label for="time4">17:00</label>
+            <input id="time4" name="time" type="radio" value="4" tabindex="8">
+            <label for="time4">17:00</label>
         </div>
 
         </div>
@@ -140,17 +152,20 @@
       </div>
 
       <div class="input">
-        <label for="lastname">Услуга:</label>
+        <label for="service">Услуга<sup>*</sup>:</label>
+        <select id="service">
+          <option>Наращивание ресниц (100 руб.)</option>
+          <option>Наращивание ресниц (200 руб.)</option>
+        </select>   
+      </div>
+
+      <div class="input">
+        <label for="lastname">Фамилия<sup>*</sup>:</label>
         <input id="lastname" type="text">    
       </div>
 
       <div class="input">
-        <label for="lastname">Фамилия:</label>
-        <input id="lastname" type="text">    
-      </div>
-
-      <div class="input">
-        <label for="firstname">Имя:</label>
+        <label for="firstname">Имя<sup>*</sup>:</label>
         <input id="firstname" type="text">  
       </div>
 
@@ -160,8 +175,13 @@
       </div>
 
       <div class="input">
-        <label for="phone">Телефон:</label>
+        <label for="phone">Телефон<sup>*</sup>:</label>
         <input id="phone" type="text">    
+      </div>
+
+      <div class="input">
+        <label for="comment">Комментарий:</label>
+        <textarea id="comment" wrap="soft"> </textarea>   
       </div>
 
       <button class="submit">Записаться</button>

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap&subset=cyrillic');
 
 * {
     margin: 0;
@@ -204,6 +205,7 @@ a.day-link:hover {
 
 #next-month:hover, #prev-month:hover, #next-day:hover, #prev-day:hover {
     transform: scale(1.5);
+
 }
 
 #btn-calendar-show {
@@ -228,6 +230,34 @@ a.day-link:hover {
     align-items: center;
     color: white;
     z-index: 10;
+}
+
+
+#header ul {
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header ul li {
+    list-style: none;
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+
+#header ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Open Sans Condensed';
+    transition: .1s linear;
+    font-size: 1.2em;
+}
+
+#header ul li a:hover {
+    text-decoration: none;
+    color: rgb(150, 150, 150);
+    font-family: 'Open Sans Condensed';
 }
 
 #header .container {
@@ -272,7 +302,7 @@ a.day-link:hover {
     align-items: center;
     justify-content: flex-start;
     flex-grow: 1;    
-    background: fixed #000000 url('../img/bg2.jpg') center no-repeat;
+    background: fixed #000000 url('../img/bg3.jpg') center no-repeat;
     background-size: cover;
     position: relative;
     z-index: 0;
@@ -350,7 +380,8 @@ input[type="radio"] + label {
     display: block;
 }
 
-input[type="radio"]:hover + label {
+input[type="radio"]:hover + label,
+input[type="radio"]:focus + label {
 	position: relative;
 	padding: 3px 10px;
     cursor: pointer;
@@ -369,24 +400,33 @@ input[type="radio"]:checked + label {
     margin: 0px 5px;
 }
 
-input[type="text"] {
+input[type="text"], .input textarea {
     font-size: 1.5em;
     font-family: Ubuntu;
     font-weight: 300;
     border: 1px solid transparent;
-    background-color: rgba(112, 112, 112, 0.315); ;
-    padding: 5px;
+    background-color: rgba(112, 112, 112, 0.315);
+    padding: 5px 15px 5px 15px;
     width: 420px;
     border-radius: 15px 5px 15px 5px;
     transition: .1s linear;
 }
 
-input[type="text"]:hover {
+.input textarea {
+    resize: none;
+    height: 200px;
+}
+
+input[type="text"]::selection, .input textarea::selection {
+    background-color: rgba(112, 112, 112, 0.315);
+}
+
+input[type="text"]:hover, .input textarea:hover {
     border: 1px solid rgb(54, 54, 54);
     background-color: rgb(219, 219, 219);
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus, .input textarea:focus {
     transform: scale(1.1);
     border: 1px solid rgb(126, 126, 126);
     background-color: rgb(219, 219, 219);
@@ -411,22 +451,67 @@ input[type="text"]:focus {
     transform: scale(1.1);
 }
 
+.input select {
+    font-size: 1.5em;
+    font-family: Ubuntu;
+    font-weight: 300;
+    border: 1px solid transparent;
+    background-color: rgba(112, 112, 112, 0.315);
+    padding: 5px 15px 5px 15px;
+    width: 420px;
+    border-radius: 15px 5px 15px 5px;
+    transition: .1s linear;
+}
+
+.input select option {
+    font-family: Ubuntu;
+    font-weight: 300;
+    border: 1px solid transparent;
+    background-color: rgba(112, 112, 112, 0.315);
+    width: 420px;
+    border-radius: 15px 5px 15px 5px;
+    transition: .1s linear;
+}
+
+.input select:focus {
+    transform: scale(1.1);
+    border: 1px solid rgb(126, 126, 126);
+    background-color: rgb(219, 219, 219);
+    outline: none;
+}
+
+#menu {
+    display: none;
+    margin-left: auto;
+    width: 32px;
+    margin-right: 10px;
+}
+
 /* Устроства с маленьким экраном (телефоны, 576px и ниже) */
 @media (max-width: 576px) {
     /* Стили для устройств с шириной viewport, находящейся в диапазоне 576px - 719px */
     .container { width: 100%; }
+    .input { flex-direction: column;}
+    #header ul { display: none;}
+    #menu { display: block; }
 }
 
 /* Устроства с маленьким экраном (планшеты, 576px и выше) */
 @media (min-width: 576px) {
     /* Стили для устройств с шириной viewport, находящейся в диапазоне 576px - 719px */
     .container { width: 540px; }
+    .input { flex-direction: column;}
+    #header ul { display: none;}
+    #menu { display: block; }
 }
 
 /* Устроства с маленьким экраном (планшеты, 768px и выше) */
 @media (min-width: 768px) {
 /* Стили для устройств с шириной viewport, находящейся в диапазоне 768px - 991px */
-.container { width: 720px; }
+    .container { width: 720px; }
+    .input { flex-direction: row;}
+    #header ul { display: flex;}
+    #menu { display: none; }
 }
  
 /* Устройства со средним экраном (ноутбуки и компьютеры, 992px и выше) */
