@@ -1,0 +1,442 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap&subset=cyrillic');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button:focus, button:active {
+    outline: none;
+}
+
+.calendar {
+    max-width: 420px;
+    width: 420px;
+    min-width: 260px;
+    border-radius: 10px;
+    user-select: none; 
+}
+
+.mini-calendar {
+    height: 100px;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 0px 10px;
+    text-align: center;
+    background-color: rgba(112, 112, 112, 0.315);  
+    border-radius: 10px 10px 0 0;
+    transition: border-radius .1s linear;
+}
+
+.mini-calendar-item {
+    align-self: stretch;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.mini-calendar-item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mini-calendar-item .week {
+    font-size: .75em;
+}
+
+.mini-calendar > div {
+    width: 12.5%;
+}
+
+.months {
+    height: 100px;
+    background: linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(46,46,46,1) 51%, rgba(42,42,42,1) 100%);width: 100%;
+    box-shadow: 0px 3px 5px black;
+    color: white;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px 10px;
+}
+
+.months div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.months #month {
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+
+.weekdays {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    text-align: center;
+    background-color: rgba(117, 117, 117, 0.555);  
+}
+
+.weekdays .week-name {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+
+.days {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: rgba(112, 112, 112, 0.315);  
+    border-radius: 0px 0px 10px 10px;
+}
+
+.days .week {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.days .week .day {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini-calendar-item a.day-link {
+    padding: 0;
+    border-radius: 0;
+}
+
+.mini-calendar-item a.day-link:hover {
+    transform: scale(1.2);
+    background-color: rgb(219, 219, 219);
+}
+
+a.day-link {
+    width: 100%;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: .1s linear;
+    border-radius: 5px;
+}
+
+.gray {
+    color: rgb(78, 78, 78);
+}
+
+.light-red {
+    color: rgb(212, 0, 0);
+}
+
+
+a.day-link.disabled {
+    color: rgb(143, 143, 143);
+}
+
+a.day-link.disabled:hover {
+    background-color: inherit;
+    transform: none;
+    transition: none;
+    cursor: default;
+}
+
+a.day-link:hover {
+    transform: scale(1.25);
+    background-color: rgb(219, 219, 219);
+}
+
+#next-month, #prev-month, #next-day, #prev-day {
+    transition: .1s linear;
+}
+
+#next-month:hover, #prev-month:hover, #next-day:hover, #prev-day:hover {
+    transform: scale(1.5);
+}
+
+#btn-calendar-show {
+    transition: .1s linear;
+    width: 100%;
+}
+
+#btn-calendar-show:hover {
+    transform: scale(1.1);
+}
+
+
+#header {
+    position: absolute;
+    top: 0;
+    background: rgb(18,18,18);
+    background: linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(46,46,46,1) 51%, rgba(42,42,42,1) 100%);width: 100%;
+    box-shadow: 0px 3px 5px black;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 10;
+}
+
+#header .container {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+}
+
+#footer {
+    background: rgb(18,18,18);
+    background: linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(46,46,46,1) 51%, rgba(42,42,42,1) 100%);width: 100%;
+    box-shadow: 0px -3px 5px black;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 10;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo h3 {
+    font-family: "Amatic SC", 'Times New Roman', Times, serif;
+    font-weight: 900;
+}
+
+#logo img {
+    margin-top: 30px;
+    width: 128px;
+}
+
+#content {
+    align-self: stretch;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;    
+    background: fixed #000000 url('../img/bg2.jpg') center no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+}
+
+.layer { 
+    background-color: rgba(0, 0, 0, 0.486);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#content .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+    flex-grow: 1;
+    background-color: rgba(226, 226, 226, 0.856);
+    padding: 50px 5px 50px 5px;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    margin: 10px 0;
+    font-weight: 300;
+}
+
+.input h3 {
+    color: black;
+    font-size: 1.5em;
+    margin-right: 10px;
+    font-weight: 300;
+}
+
+.input label {
+    color: black;
+    font-size: 1.5em;
+}
+
+.input > .content {
+    width: 420px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input .checkbox {
+    display: none;
+}
+
+input[type="radio"] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	margin: 10px 0 0 7px;
+}
+
+input[type="radio"] + label {
+    background: rgba(112, 112, 112, 0.315); 
+    color: black;
+    border-radius: 10px;
+	position: relative;
+	padding: 3px 10px;
+    cursor: pointer;
+    margin: 0px 5px;
+    user-select: none;
+    transition: .1s linear;
+    display: block;
+}
+
+input[type="radio"]:hover + label {
+	position: relative;
+	padding: 3px 10px;
+    cursor: pointer;
+    margin: 0px 5px;
+    transform: scale(1.25);
+    background-color: rgb(219, 219, 219);
+}
+
+input[type="radio"]:checked + label {
+    transform: scale(1.25); 
+    background: rgb(219, 219, 219);
+    color: black;
+	position: relative;
+	padding: 3px 10px;
+    cursor: pointer;
+    margin: 0px 5px;
+}
+
+input[type="text"] {
+    font-size: 1.5em;
+    font-family: Ubuntu;
+    font-weight: 300;
+    border: 1px solid transparent;
+    background-color: rgba(112, 112, 112, 0.315); ;
+    padding: 5px;
+    width: 420px;
+    border-radius: 15px 5px 15px 5px;
+    transition: .1s linear;
+}
+
+input[type="text"]:hover {
+    border: 1px solid rgb(54, 54, 54);
+    background-color: rgb(219, 219, 219);
+}
+
+input[type="text"]:focus {
+    transform: scale(1.1);
+    border: 1px solid rgb(126, 126, 126);
+    background-color: rgb(219, 219, 219);
+    outline: none;
+}
+
+.submit {
+    padding: 10px;
+    background: rgba(112, 112, 112, 0.315);
+    background: linear-gradient(65deg, rgba(75,132,251,1) 0%, rgba(0,100,247,1) 54%, rgba(10,47,190,1) 100%);margin-top: 25px;
+    font-size: 1.5em;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    font-weight: 300;
+    width: 300px;
+    transition: .1s linear;
+    color: white;
+}
+
+.submit:hover {
+    transform: scale(1.1);
+}
+
+/* Устроства с маленьким экраном (телефоны, 576px и ниже) */
+@media (max-width: 576px) {
+    /* Стили для устройств с шириной viewport, находящейся в диапазоне 576px - 719px */
+    .container { width: 100%; }
+}
+
+/* Устроства с маленьким экраном (планшеты, 576px и выше) */
+@media (min-width: 576px) {
+    /* Стили для устройств с шириной viewport, находящейся в диапазоне 576px - 719px */
+    .container { width: 540px; }
+}
+
+/* Устроства с маленьким экраном (планшеты, 768px и выше) */
+@media (min-width: 768px) {
+/* Стили для устройств с шириной viewport, находящейся в диапазоне 768px - 991px */
+.container { width: 720px; }
+}
+ 
+/* Устройства со средним экраном (ноутбуки и компьютеры, 992px и выше) */
+@media (min-width: 992px) {
+  /* Стили для устройств с шириной viewport, находящейся в диапазоне 992px - 1199px */
+  .container { width: 960px; }
+}
+ 
+/* Устройства с большим экраном (компьютеры, 1200px и выше) */
+@media (min-width: 1200px) {
+  /* Стили для устройств с шириной viewport >1200px */
+  .container { width: 1140px; }
+}
