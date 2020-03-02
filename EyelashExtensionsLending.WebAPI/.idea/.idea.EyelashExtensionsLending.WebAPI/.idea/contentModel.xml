@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Development\EyelashExtensionsLending\EyelashExtensionsLending.WebAPI" t="IncludeFlat">
+      <e p="EyelashExtensionsLending.WebAPI" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="UsersController.cs" t="Include" />
+        </e>
+        <e p="Entities" t="Include">
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="EyelashExtensionsLending.WebAPI.csproj" t="IncludeRecursive" />
+        <e p="Helpers" t="Include">
+          <e p="AppSettings.cs" t="Include" />
+          <e p="ExtensionMethods.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="AuthenticateModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="EyelashExtensionsLending.WebAPI.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="IUserService.cs" t="Include" />
+          <e p="UserService.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="EyelashExtensionsLending.WebAPI.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\okorshunov\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\okorshunov\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_EyelashExtensionsLending.WebAPI.-27596954.00" t="ExcludeRecursive" />
+  </component>
+</project>
